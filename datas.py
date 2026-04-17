@@ -1,8 +1,8 @@
 import requests
 import random
 import string
-from url import Url
-from endopoints import Endpoints
+from urls import Url
+from endpoints import Endpoints
 
 def generate_random_string(length):
     letters = string.ascii_lowercase
@@ -36,7 +36,7 @@ class Generator:
         return payload
     
     @staticmethod
-    def generate_random_data_wo_pasword():
+    def generate_random_data_wo_password():
         login = generate_random_string(10)
         first_name = generate_random_string(10)
 
@@ -48,10 +48,16 @@ class Generator:
         return payload
     
 class Courier:
-    # функция для регистрации курьера с валидными данными
+    # функция для регистрации курьера с валидными рандомными данными
     @staticmethod
     def registration_courier():
         data = Generator.generate_random_valid_data()
+        response = requests.post(f'{Url.base_url}{Endpoints.create_courier}', data=data)
+        return {"response_text": response.text, "status_code": response.status_code, "data": data}
+    
+    # функция для регистрации курьера с валидными данными
+    @staticmethod
+    def registration_courier_with_data(data):
         response = requests.post(f'{Url.base_url}{Endpoints.create_courier}', data=data)
         return {"response_text": response.text, "status_code": response.status_code, "data": data}
     
