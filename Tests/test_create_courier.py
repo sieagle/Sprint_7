@@ -2,12 +2,12 @@ import allure
 import pytest
 from helper import Helper
 from generate import Generator
-from datas import ResponseErrorMessages, DatasCourier
+from datas import ResponseErrorMessages
 
 class TestCreateHelper:
     @allure.title('Создание нового курьера')
     @allure.description('Создать нового курьера, проверить ответ, удалить созданного курьера')
-    def test_registration_Helper_valid(self):
+    def test_registration_courier_valid(self):
         courier = Helper.registration_courier()
         assert courier["status_code"] == 201
         assert courier["response"]["ok"] == True

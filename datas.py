@@ -18,7 +18,7 @@ class Orderorder:
     }
 
 class ResponseErrorMessages:
-    login_already_exists = "Этот логин уже используется."
+    login_already_exists = "Этот логин уже используется"
     not_enough_data = "Недостаточно данных для создания учетной записи"
 
     courier_not_found = "Учетная запись не найдена"

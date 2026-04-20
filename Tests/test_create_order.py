@@ -16,6 +16,7 @@ class TestOrderCreate:
         data = Orderorder.data
         data.update(color)
         data = json.dumps(data)
-        response = requests.post(f'{Url.base_url}{Endpoints.create_order}', headers=headers, data=data)
+        with allure.step("Отправить запрос на заказ самоката"):
+            response = requests.post(f'{Url.base_url}{Endpoints.create_order}', headers=headers, data=data)
         assert response.status_code == 201
         assert "track" in response.text
