@@ -17,7 +17,7 @@ class Orderorder:
         "comment": "Так мало пройдено дорог, так много сделано ошибок...",
     }
 
-class ResponseErrorMessages:
+class ResponseMessages:
     login_already_exists = "Этот логин уже используется"
     not_enough_data = "Недостаточно данных для создания учетной записи"
 
@@ -26,4 +26,7 @@ class ResponseErrorMessages:
 
     delete_id_courier_not_found = "Курьера с таким id нет"
     delete_courier_not_enough_data = "Недостаточно данных для удаления курьера"
+
+    get_list_order = "orders"
+    post_create_order = "track"
 

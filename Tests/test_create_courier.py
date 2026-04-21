@@ -2,7 +2,7 @@ import allure
 import pytest
 from helper import Helper
 from generate import Generator
-from datas import ResponseErrorMessages
+from datas import ResponseMessages
 
 class TestCreateHelper:
     @allure.title('Создание нового курьера')
@@ -18,7 +18,7 @@ class TestCreateHelper:
         courier = Helper.registration_courier()
         courier_second = Helper.registration_courier_with_data(courier["data"])
         assert courier_second["status_code"] == 409
-        assert ResponseErrorMessages.login_already_exists in courier_second["response"]["message"]
+        assert ResponseMessages.login_already_exists in courier_second["response"]["message"]
 
     @allure.title('Регистрации без обязательных полей логина/пароля')
     @allure.description('Отправить запрос с незаполненным обязательным полем')
@@ -27,4 +27,4 @@ class TestCreateHelper:
     def test_registrations_with_invalid_data_failed(self, datas):
         courier = Helper.registration_courier_with_data(datas)
         assert courier["status_code"] == 400
-        assert ResponseErrorMessages.not_enough_data in courier["response"]["message"]
+        assert ResponseMessages.not_enough_data in courier["response"]["message"]

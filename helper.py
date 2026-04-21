@@ -5,8 +5,8 @@ from urls import Url
 from endpoints import Endpoints
 
 class Helper:
-    # функция для регистрации курьера с валидными рандомными данными
     @staticmethod
+    @allure.step('Функция для регистрации курьера с валидными рандомными данными')
     def registration_courier():
         with allure.step("Сгенерировать валидные данные для регистрации курьера"):
             data = Generator.generate_random_valid_data()
@@ -14,22 +14,22 @@ class Helper:
             response = requests.post(f'{Url.base_url}{Endpoints.create_courier}', data=data)
         return {"response": response.json(), "status_code": response.status_code, "data": data}
     
-    # функция для регистрации курьера с валидными данными
     @staticmethod
+    @allure.step('Функция для регистрации курьера с валидными данными')
     def registration_courier_with_data(data):
         with allure.step("Отправить запрос на регистрацию с кастомными данными"):
             response = requests.post(f'{Url.base_url}{Endpoints.create_courier}', data=data)
         return {"response": response.json(), "status_code": response.status_code, "data": data}
     
-    # функция для логина курьера и возвратом id курьера
     @staticmethod
+    @allure.step('Функция для логина курьера и возвратом id курьера')
     def login_courier_and_get_id(data):
         with allure.step("Отправить запрос на авторизацию юзера с кастомными данными и вернуть id курьера"):
             response = requests.post(f'{Url.base_url}{Endpoints.login_courier}', data=data)
         return {"id": str(response.json()["id"]), "response": response.json(), "status_code": response.status_code}
     
-    # функция для логина курьера и возвратом id курьера со своей датой
     @staticmethod
+    @allure.step('Функция для логина курьера и возвратом id курьера со своей датой')
     def login_courier_and_get_id_with_data(login, password):
         with allure.step("Отправить запрос на авторизацию юзера с кастомными логином и паролем и вернуть id курьера"):
             response = requests.post(f'{Url.base_url}{Endpoints.login_courier}', data={
@@ -37,8 +37,9 @@ class Helper:
                 "password": password
             })
         return {"response": response.json(), "status_code": response.status_code}
-
+    
     @staticmethod
+    @allure.step('Функция для удаления курьера')
     def delete_courier(id):
         with allure.step("Отправить запрос на удаление курьера по id"):
             response = requests.delete(f'{Url.base_url}{Endpoints.delete_courier}{id}')
