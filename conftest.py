@@ -7,9 +7,3 @@ def courier():
     courier_login = Helper.login_courier_and_get_id(courier_create["data"])
     yield courier_create
     Helper.delete_courier(courier_login["id"])
-
-# @pytest.fixture()
-# def courier_delete():
-#     courier_create = Helper.registration_courier()
-#     courier_login = Helper.login_courier_and_get_id(courier_create["data"])
-#     return courier_login

@@ -3,14 +3,7 @@ from helper import Helper
 from datas import ResponseMessages
 
 class TestCourierDelete:
-    # @allure.title('Удаление курьера')
-    # @allure.description('Отправить запрос на удаление курьера и проверить ответ')
-    # def test_delete_courier(self, courier_delete):
-    #     coorier_id = courier_delete['id']
-    #     with allure.step("Отправить запрос на удаление курьера"):
-    #         response = Helper.delete_courier(coorier_id)
-    #     assert response["status_code"] == 200
-    #     assert response["response"]["ok"] == True
+
     @allure.title('Удаление курьера')
     @allure.description('Отправить запрос на удаление курьера и проверить ответ')
     @allure.step('Тест на удаление курьера')
